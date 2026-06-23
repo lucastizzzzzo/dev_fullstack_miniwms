@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clientes - Mini WMS</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1>Clientes</h1>
+    <div class="toolbar"><a th:if="${isAdmin}" href="/clientes/novo" class="btn">Novo Cliente</a></div>
+    <table class="table">
+      <thead><tr><th>Nome</th><th>Documento</th><th>Telefone</th><th>Email</th><th>Ativo</th><th>Ações</th></tr></thead>
+      <tbody>
+        <tr th:each="c : ${clientes}">
+          <td><a th:href="@{'/clientes/' + ${c.id}}" th:text="${c.nome}">Nome</a></td>
+          <td th:text="${c.documento}">000</td>
+          <td th:text="${c.telefone}">000</td>
+          <td th:text="${c.email}">email</td>
+          <td th:text="${c.ativo} == true ? 'Sim' : 'Não'">Sim</td>
+          <td>
+            <form th:if="${c.ativo} and ${isAdmin}" th:action="@{'/clientes/' + ${c.id} + '/desativar'}" method="post" style="display:inline">
+              <button type="submit" class="btn">Desativar</button>
+            </form>
+            <form th:if="${!c.ativo} and ${isAdmin}" th:action="@{'/clientes/' + ${c.id} + '/deletar'}" method="post" style="display:inline;margin-left:8px">
+              <button type="submit" class="btn btn-danger" onclick="return confirm('Remover cliente permanentemente?')">Remover</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

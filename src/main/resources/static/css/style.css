@@ -1,0 +1,30 @@
+:root{--primary:#2563EB;--muted:#6b7280;--bg:#f6f8fb;--card:#ffffff}
+body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 0; background: var(--bg); color:#111827 }
+.container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+.toolbar { margin-bottom: 12px; }
+.table { width: 100%; border-collapse: collapse; background: var(--card); border-radius:8px; overflow:hidden; box-shadow:0 1px 2px rgba(16,24,40,0.05); }
+.table th, .table td { border-bottom: 1px solid #eef2f7; padding: 12px 14px; text-align:left }
+.table thead th { background: linear-gradient(180deg,#fbfdff,#f3f7ff); font-weight:600; color:var(--muted) }
+.form div { margin-bottom: 10px; }
+.btn { display: inline-block; padding: 8px 14px; background:var(--primary); color:#fff; text-decoration:none; border-radius:8px; border:none; cursor:pointer }
+.btn.secondary { background:#eef2ff; color:var(--primary) }
+
+/* Header */
+.header-container{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(15,23,42,0.06);background:var(--card)}
+.brand{font-weight:700;font-size:15px;color:#0f172a}
+.authors{font-weight:500;font-size:12px;color:var(--muted);line-height:1.1;margin-top:6px}
+.main-nav{display:flex;gap:14px;align-items:center}
+.nav-link{color:var(--primary);text-decoration:none;padding:6px 8px;border-radius:6px;font-size:14px}
+.nav-link:hover{background:rgba(37,99,235,0.08)}
+.nav-link.logout{color:#ef4444}
+
+/* Menu page */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+.menu-card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 1px 2px rgba(16,24,40,0.04);text-align:center}
+.menu-card a{display:block;color:var(--primary);font-weight:600;text-decoration:none}
+
+/* Forms */
+input, select, textarea{padding:8px 10px;border:1px solid #e6eef6;border-radius:6px;width:100%;box-sizing:border-box}
+
+/* Responsive tweaks */
+@media(max-width:720px){.main-nav{display:flex;flex-wrap:wrap;gap:8px}.brand{font-size:13px}}

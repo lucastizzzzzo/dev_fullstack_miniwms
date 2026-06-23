@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Usuários - Mini WMS</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1>Usuários</h1>
+       <table class="table">
+         <thead>
+           <tr><th>Nome</th><th>Email</th><th>Perfil</th><th>Ativo</th></tr>
+         </thead>
+         <tbody>
+           <tr th:each="u : ${usuarios}">
+             <td th:text="${u.nome}">Nome</td>
+             <td th:text="${u.email}">email@x</td>
+             <td th:text="${u.perfil}">ROLE_ADMIN</td>
+             <td th:text="${u.ativo} == true ? 'Sim' : 'Não'">Sim</td>
+           </tr>
+         </tbody>
+       </table>
+  </div>
+</body>
+</html>

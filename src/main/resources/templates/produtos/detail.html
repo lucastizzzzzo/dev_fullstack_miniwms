@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Produto - Detalhe</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1 th:text="${produto.nome}">Produto</h1>
+    <p><strong>SKU:</strong> <span th:text="${produto.sku}"></span></p>
+    <p><strong>Unidade:</strong> <span th:text="${produto.unidadeMedida}"></span></p>
+    <p><strong>Saldo total:</strong> <span th:text="${saldo}"></span></p>
+
+    <h2>Lotes</h2>
+    <table class="table">
+      <thead><tr><th>Código Lote</th><th>Quantidade Total</th><th>Reservada</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr th:each="l: ${lotes}">
+          <td th:text="${l.codigoLote}"></td>
+          <td th:text="${l.quantidadeTotal}"></td>
+          <td th:text="${l.quantidadeReservada}"></td>
+          <td th:text="${l.status}"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><a href="/lotes/novo?produtoId=${produto.id}">Criar lote para este produto</a></p>
+    <p><a href="/produtos">Voltar</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<div th:fragment="header">
+  <div class="header-container">
+    <div class="brand">
+      TRABALHO MINI WMS - DESENVOLVIMENTO FULL STACK
+      <div class="authors">
+        <div>Lucas Freire Tizzo - 201804675</div>
+        <div>Gustavo Goulart Caldas Araujo - 201907467</div>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a th:href="@{/menu}" class="nav-link">Menu</a>
+      <a th:href="@{/usuarios}" class="nav-link">Usuários</a>
+      <a th:href="@{/produtos}" class="nav-link">Produtos</a>
+      <a th:href="@{/lotes}" class="nav-link">Lotes</a>
+      <a th:href="@{/enderecos}" class="nav-link">Endereços</a>
+      <a th:href="@{/unidades}" class="nav-link">Unidades</a>
+      <a th:href="@{/clientes}" class="nav-link">Clientes</a>
+      <a th:href="@{/ordens}" class="nav-link">Ordens de Saída</a>
+      <a th:href="@{/movimentacoes}" class="nav-link">Movimentações</a>
+      <form th:action="@{/logout}" method="post" style="display:inline; margin:0; padding:0">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="nav-link logout">Sair</button>
+      </form>
+    </nav>
+  </div>
+</div>

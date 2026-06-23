@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Novo Lote</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1>Novo Lote</h1>
+    <form th:action="@{/lotes}" th:object="${lote}" method="post" class="form">
+      <div>
+        <label>Produto</label>
+        <select th:field="*{produto.id}">
+          <option th:each="p : ${produtos}" th:value="${p.id}" th:text="${p.sku + ' - ' + p.nome}"></option>
+        </select>
+      </div>
+      <div>
+        <label>Endereço</label>
+        <select th:field="*{endereco.id}">
+          <option value="" th:text="'-- escolha um endereço --'">-- escolha um endereço --</option>
+          <option th:each="e : ${enderecos}" th:value="${e.id}" th:text="${e.codigo + ' - ' + e.descricao}"></option>
+        </select>
+      </div>
+      <div>
+        <label>Código Lote</label>
+        <input type="text" th:field="*{codigoLote}" required />
+      </div>
+      <div>
+        <label>Quantidade Total</label>
+        <input type="number" step="0.01" th:field="*{quantidadeTotal}" />
+      </div>
+      <div>
+        <label>Data Validade</label>
+        <input type="date" th:field="*{dataValidade}" />
+      </div>
+      <div>
+        <button type="submit">Salvar</button>
+        <a href="/lotes">Cancelar</a>
+      </div>
+    </form>
+    <p><a href="/produtos">Voltar</a></p>
+  </div>
+</body>
+</html>

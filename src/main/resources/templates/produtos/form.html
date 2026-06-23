@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Novo Produto - Mini WMS</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1>Novo Produto</h1>
+    <form th:action="@{/produtos}" th:object="${produto}" method="post" class="form">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <div>
+        <label>SKU</label>
+        <input type="text" th:field="*{sku}" required />
+      </div>
+      <div>
+        <label>Nome</label>
+        <input type="text" th:field="*{nome}" required />
+      </div>
+      <div>
+        <label>Unidade</label>
+        <input type="text" th:field="*{unidadeMedida}" />
+      </div>
+      <div>
+        <button type="submit">Salvar</button>
+        <a href="/produtos">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

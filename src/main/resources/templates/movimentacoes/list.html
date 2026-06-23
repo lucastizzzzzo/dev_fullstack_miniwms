@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Movimentações - Mini WMS</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1>Movimentações</h1>
+    <form method="get" action="/movimentacoes" style="margin-bottom:12px;">
+      <label for="tipo">Filtrar por tipo:</label>
+      <select id="tipo" name="tipo">
+        <option th:selected="${filtroTipo == null}" value="">Todos</option>
+        <option th:selected="${filtroTipo == 'RESERVA'}" value="RESERVA">RESERVA</option>
+        <option th:selected="${filtroTipo == 'ENTRADA'}" value="ENTRADA">ENTRADA</option>
+        <option th:selected="${filtroTipo == 'SAIDA'}" value="SAIDA">SAIDA</option>
+        <option th:selected="${filtroTipo == 'TRANSFERENCIA'}" value="TRANSFERENCIA">TRANSFERENCIA</option>
+      </select>
+      <button class="btn" type="submit">Aplicar</button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Tipo</th><th>Produto</th><th>Endereço</th><th>Lote</th><th>Quantidade</th><th>Data</th>
+          <th>Criado Por</th><th>Criado Em</th><th>Alterado Por</th><th>Alterado Em</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="m : ${movimentacoes}">
+          <td th:text="${m.tipo}">ENTRADA</td>
+          <td th:text="${m.produtoIdentificador}"></td>
+          <td th:text="${m.origemIdentificador != null && !#strings.isEmpty(m.origemIdentificador) ? m.origemIdentificador : (m.destinoIdentificador != null ? m.destinoIdentificador : '')}"></td>
+          <td th:text="${m.loteIdentificador}"></td>
+          <td th:text="${m.quantidade}"></td>
+          <td th:text="${m.dataMovimentacao != null ? #temporals.format(m.dataMovimentacao, 'dd/MM/yyyy HH:mm') : ''}"></td>
+          <td th:text="${m.criadoPor}"></td>
+          <td th:text="${m.criadoEm != null ? #temporals.format(m.criadoEm, 'dd/MM/yyyy HH:mm') : ''}"></td>
+          <td th:text="${m.alteradoPor}"></td>
+          <td th:text="${m.alteradoEm != null ? #temporals.format(m.alteradoEm, 'dd/MM/yyyy HH:mm') : ''}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

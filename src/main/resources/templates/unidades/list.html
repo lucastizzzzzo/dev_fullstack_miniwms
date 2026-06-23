@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unidades de Medida</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1>Unidades de Medida</h1>
+    <div class="toolbar"><a href="/unidades/novo" class="btn">Nova Unidade</a></div>
+    <table class="table">
+      <thead><tr><th>Código</th><th>Descrição</th><th>Ações</th></tr></thead>
+      <tbody>
+        <tr th:each="u : ${unidades}">
+          <td th:text="${u.codigo}">UN</td>
+          <td th:text="${u.descricao}">Unidade</td>
+          <td>
+            <form th:action="@{'/unidades/' + ${u.id} + '/excluir'}" method="post" th:if="${podeExcluir[u.id]}">
+              <button type="submit" class="btn btn-danger" onclick="return confirm('Confirma exclusão desta unidade?')">Excluir</button>
+            </form>
+            <span th:if="${!podeExcluir[u.id]}">Em uso</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><a href="/produtos">Voltar</a></p>
+  </div>
+</body>
+</html>

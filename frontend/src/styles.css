@@ -1,0 +1,7 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+.container { max-width: 900px; margin: 0 auto; }
+.toolbar { margin-bottom: 10px; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border: 1px solid #ddd; padding: 8px; }
+.form div { margin-bottom: 8px; }
+.error { color: #a00; margin-bottom: 8px; }

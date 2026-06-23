@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nova Unidade</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <style>.center{max-width:520px;margin:40px auto}</style>
+</head>
+<body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">
+    <h1>Nova Unidade</h1>
+    <form th:action="@{/unidades}" th:object="${unidade}" method="post" class="form">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <div>
+        <label>Código</label>
+        <input type="text" th:field="*{codigo}" required />
+      </div>
+      <div>
+        <label>Descrição</label>
+        <input type="text" th:field="*{descricao}" />
+      </div>
+      <div>
+        <button type="submit">Salvar</button>
+        <a href="/unidades">Cancelar</a>
+      </div>
+    </form>
+    <p><a href="/produtos">Voltar</a></p>
+  </div>
+</body>
+</html>

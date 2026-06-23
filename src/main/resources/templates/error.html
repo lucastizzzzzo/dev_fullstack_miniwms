@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Erro - Mini WMS</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <style>
+    .error-box { padding: 20px; border: 1px solid #f2a; background: #fff6f6; }
+    .status { font-weight: bold; color: #a00; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ocorreu um erro</h1>
+    <div class="error-box">
+      <div><span class="status">Status:</span> <span th:text="${status}">N/A</span></div>
+      <div><span class="status">Erro:</span> <span th:text="${error}">N/A</span></div>
+      <div><span class="status">Mensagem:</span> <span th:text="${message}">N/A</span></div>
+      <div><span class="status">Caminho:</span> <span th:text="${path}">N/A</span></div>
+    </div>
+    <p><a href="/">Ir para a página inicial</a></p>
+  </div>
+</body>
+  <div th:insert="fragments/header :: header"></div>
+  <div class="container">

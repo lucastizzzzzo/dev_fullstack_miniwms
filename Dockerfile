@@ -1,9 +1,8 @@
 # Multi-stage build: build with Maven, then run the fat JAR with OpenJDK
-FROM maven:3.8.7-jdk-17 AS build
+FROM maven:3.9.16-eclipse-temurin-17-alpine AS build
 WORKDIR /workspace
-COPY pom.xml mvnw* ./
-COPY .mvn .mvn
-COPY src src
+COPY pom.xml ./
+COPY src ./src
 RUN mvn -B -DskipTests package
 
 FROM eclipse-temurin:17-jre

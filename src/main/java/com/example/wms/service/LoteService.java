@@ -62,7 +62,10 @@ public class LoteService {
             }
             if (saved.getCodigoLote() != null) mov.setLoteIdentificador(saved.getCodigoLote());
             if (saved.getId() != null) mov.setLoteId(saved.getId());
-            if (saved.getEndereco() != null) mov.setDestinoIdentificador(saved.getEndereco().getCodigo());
+            if (saved.getEndereco() != null) {
+                mov.setDestinoIdentificador(saved.getEndereco().getCodigo());
+                if (saved.getEndereco().getId() != null) mov.setDestinoId(saved.getEndereco().getId());
+            }
             movimentacaoRepository.save(mov);
         }
         return saved;
@@ -81,20 +84,24 @@ public class LoteService {
 
         Movimentacao mov = new Movimentacao();
         mov.setTipo("ENDERECO ALTERADO");
-        mov.setProduto(saved.getProduto());
-        mov.setLote(saved);
-        mov.setOrigem(origem);
-        mov.setDestino(destino);
         mov.setQuantidade(0.0);
         mov.setDataMovimentacao(LocalDateTime.now());
         if (saved.getProduto() != null) {
             var p = saved.getProduto();
             var ident = (p.getSku() != null && !p.getSku().isBlank()) ? (p.getSku() + " - " + (p.getDescricao()!=null && !p.getDescricao().isBlank() ? p.getDescricao() : p.getNome())) : (p.getDescricao()!=null? p.getDescricao(): p.getNome());
             mov.setProdutoIdentificador(ident);
+            if (p.getId() != null) mov.setProdutoId(p.getId());
         }
         if (saved.getCodigoLote() != null) mov.setLoteIdentificador(saved.getCodigoLote());
-        if (origem != null) mov.setOrigemIdentificador(origem.getCodigo());
-        if (destino != null) mov.setDestinoIdentificador(destino.getCodigo());
+        if (saved.getId() != null) mov.setLoteId(saved.getId());
+        if (origem != null) {
+            mov.setOrigemIdentificador(origem.getCodigo());
+            if (origem.getId() != null) mov.setOrigemId(origem.getId());
+        }
+        if (destino != null) {
+            mov.setDestinoIdentificador(destino.getCodigo());
+            if (destino.getId() != null) mov.setDestinoId(destino.getId());
+        }
         movimentacaoRepository.save(mov);
 
         return saved;

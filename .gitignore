@@ -1,3 +1,47 @@
+# Java / Maven
+/target/
+/out/
+**/*.class
+*.log
+*.jar
+*.war
+*.ear
+/generated-sources/
+dependency-reduced-pom.xml
+
+# IDEs
+/.idea/
+*.iml
+/.project
+/.classpath
+/.settings/
+/.vscode/
+
+# Node / frontend
+/node_modules/
+/dist/
+/build/
+
+# Database and migrations (ignore SQL files and migration folders)
+**/*.sql
+/db/
+
+# Diagrams and exports
+**/*.mmd
+/diagrams/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+
+# Misc
+*.swp
+
+# Keep source code and build files tracked (examples):
+# - src/, pom.xml, package.json, frontend/ will be tracked by default
 # Ignore mermaid diagrams and SQL migrations
 *.mmd
 *.sql

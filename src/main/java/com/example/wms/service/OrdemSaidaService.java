@@ -241,6 +241,8 @@ public class OrdemSaidaService {
                 lote = loteRepository.findById(loteId).orElse(null);
             } else if (item.getLote() != null) {
                 lote = item.getLote();
+            } else if (item.getLoteIdentificador() != null && !item.getLoteIdentificador().isBlank()) {
+                lote = loteRepository.findByCodigoLote(item.getLoteIdentificador()).orElse(null);
             }
             if (lote != null) {
                 // ensure we operate on the freshest instance from DB when possible

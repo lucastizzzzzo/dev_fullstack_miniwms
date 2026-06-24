@@ -12,16 +12,16 @@ public class Movimentacao extends Auditable {
 
     private String tipo;
 
-    @Transient
+    @Column(name = "produto_id")
     private Long produtoId;
 
-    @Transient
+    @Column(name = "lote_id")
     private Long loteId;
 
-    @Transient
+    @Column(name = "origem_id")
     private Long origemId;
 
-    @Transient
+    @Column(name = "destino_id")
     private Long destinoId;
 
     private Double quantidade;
